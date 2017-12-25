@@ -1,7 +1,8 @@
 package sec.project.domain;
 
-import javax.persistence.Entity;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import javax.persistence.Entity;
 
 @Entity
 public class Signup extends AbstractPersistable<Long> {
