@@ -2,10 +2,8 @@ package sec.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,26 +23,27 @@ public class CreditCardController {
 
     @RequestMapping("*")
     public String defaultMapping() {
-        return "redirect:/cards";
+        return "redirect:/index";
     }
 
-    @RequestMapping(value = "/cards", method = RequestMethod.GET)
-    public String loadCards(Model model) {
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String loadIndex(Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        Account account = accountRepository.findByUsername(username);
-        System.out.println(account.getUsername());
-        model.addAttribute("account", account);
-        model.addAttribute("cards", creditCardRepository.findByAccount(account));
-        return "cards";
+        String name = accountRepository.findByUsername(username).getName();
+        model.addAttribute("cards", creditCardRepository.findByAccountName(name));
+        return "index";
     }
 
-    @RequestMapping(value = "/cards", method = RequestMethod.POST)
+    @RequestMapping(value = "/addCard", method = RequestMethod.POST)
     public String submitCard(@RequestParam String number) {
+        if (number.trim().isEmpty()) {
+            return "redirect:/index";
+        }
+
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findByUsername(username);
-        System.out.println(account.getUsername());
         creditCardRepository.save(new CreditCard(number, account));
-        return "cards";
+        return "redirect:/index";
     }
 
 }

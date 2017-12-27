@@ -13,8 +13,20 @@ public class Account extends AbstractPersistable<Long> {
     @Column(unique = true)
     private String username;
     private String password;
+    private String name;
     @OneToMany
     private List<CreditCard> creditCards;
+
+    public Account() {
+        super();
+    }
+
+    public Account(String username, String password, String name) {
+        this();
+        this.username = username;
+        this.password = password;
+        this.name = name;
+    }
 
     public String getUsername() {
         return username;
@@ -39,4 +51,13 @@ public class Account extends AbstractPersistable<Long> {
     public void setCreditCards(List<CreditCard> creditCards) {
         this.creditCards = creditCards;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
