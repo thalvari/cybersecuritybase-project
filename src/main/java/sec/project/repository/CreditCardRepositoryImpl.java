@@ -1,6 +1,5 @@
 package sec.project.repository;
 
-
 import org.springframework.stereotype.Repository;
 import sec.project.domain.CreditCard;
 

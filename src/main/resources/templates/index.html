@@ -14,6 +14,7 @@
     </tr>
     <tr th:each="card : ${cards}">
         <td th:text="${card.account.name}"></td>
+        <!--<td th:text="${card.number}"></td>-->
         <td th:utext="${card.number}"></td>
     </tr>
 </table>

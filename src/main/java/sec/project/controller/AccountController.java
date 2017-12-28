@@ -21,7 +21,7 @@ public class AccountController {
             return "redirect:/{id}";
         }
 
-        Account account = accountRepository.findById(id);
+        Account account = accountRepository.findOne(id);
         account.setName(newName);
         model.addAttribute("id", id);
         accountRepository.save(account);

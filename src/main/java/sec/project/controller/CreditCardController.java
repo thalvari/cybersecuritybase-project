@@ -31,7 +31,7 @@ public class CreditCardController {
 
     @GetMapping("/{id}")
     public String loadIndex(Model model, @PathVariable Long id) {
-        Account account = accountRepository.findById(id);
+        Account account = accountRepository.findOne(id);
         if (account == null) {
             return "redirect:/";
         }
@@ -47,7 +47,7 @@ public class CreditCardController {
             return "redirect:/{id}";
         }
 
-        Account account = accountRepository.findById(id);
+        Account account = accountRepository.findOne(id);
         creditCardRepository.save(new CreditCard(number, account));
         return "redirect:/{id}";
     }

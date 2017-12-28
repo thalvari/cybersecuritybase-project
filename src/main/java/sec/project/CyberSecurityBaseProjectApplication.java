@@ -10,6 +10,7 @@ import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletCon
 import sec.project.config.MySessionIdGenerator;
 
 @SpringBootApplication
+//public class CyberSecurityBaseProjectApplication {
 public class CyberSecurityBaseProjectApplication implements EmbeddedServletContainerCustomizer {
 
     public static void main(String[] args) throws Throwable {
