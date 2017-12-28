@@ -29,14 +29,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @PostConstruct
     public void init() {
-        Account account = new Account("abel", encoder.encode("password"), "Abel");
+        Account account = new Account("abel", encoder.encode("123456"), "Abel");
         accountRepository.save(account);
         creditCardRepository.save(new CreditCard("000000001", account));
         creditCardRepository.save(new CreditCard("000000002", account));
         creditCardRepository.save(new CreditCard("000000003", account));
         creditCardRepository.save(new CreditCard("000000004", account));
 
-        account = new Account("bob", encoder.encode("12345678"), "Bob");
+        account = new Account("bob", encoder.encode("password"), "Bob");
         accountRepository.save(account);
         creditCardRepository.save(new CreditCard("000000005", account));
         creditCardRepository.save(new CreditCard("000000006", account));

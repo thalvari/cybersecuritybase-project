@@ -7,6 +7,7 @@ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletCont
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import sec.project.config.MySessionIdGenerator;
 
 @SpringBootApplication
 public class CyberSecurityBaseProjectApplication implements EmbeddedServletContainerCustomizer {

@@ -1,4 +1,4 @@
-package sec.project;
+package sec.project.config;
 
 import org.apache.catalina.SessionIdGenerator;
 
