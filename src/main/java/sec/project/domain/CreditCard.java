@@ -2,12 +2,14 @@ package sec.project.domain;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class CreditCard extends AbstractPersistable<Long> {
 
+    @Column(unique = true)
     private String number;
     @ManyToOne
     private Account account;

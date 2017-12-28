@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Credit cards</title>
+    <title th:text="${account.name} + '\'s credit cards'"></title>
 </head>
 <body>
 
-<h2>Credit cards</h2>
+<h2 th:text="${account.name} + '\'s credit cards'"></h2>
 
 <table border="1">
     <tr>
@@ -13,21 +13,21 @@
         <th>Card number</th>
     </tr>
     <tr th:each="card : ${cards}">
-        <td th:utext="${card.account.name}"></td>
-        <td th:text="${card.number}"></td>
+        <td th:text="${card.account.name}"></td>
+        <td th:utext="${card.number}"></td>
     </tr>
 </table>
 
 <h2>Add a credit card</h2>
 
-<form th:action="@{/addCard}" method="POST">
+<form th:action="@{/addCard/} + ${id}" method="POST">
     <p><label>Card number</label>: <input type="text" name="number"/></p>
     <p><input type="submit" value="Submit"/></p>
 </form>
 
 <h2>Change name</h2>
 
-<form th:action="@{/changeName}" method="POST">
+<form th:action="@{/changeName/} + ${id}" method="POST">
     <p><label>New name</label>: <input type="text" name="newName"/></p>
     <p><input type="submit" value="Submit"/></p>
 </form>

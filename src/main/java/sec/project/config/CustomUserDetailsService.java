@@ -29,12 +29,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @PostConstruct
     public void init() {
-        Account account = new Account("admin", encoder.encode("123456"), "Admin");
+        Account account = new Account("abel", encoder.encode("password"), "Abel");
         accountRepository.save(account);
         creditCardRepository.save(new CreditCard("000000001", account));
-
-        account = new Account("abel", encoder.encode("password"), "Abel");
-        accountRepository.save(account);
         creditCardRepository.save(new CreditCard("000000002", account));
         creditCardRepository.save(new CreditCard("000000003", account));
         creditCardRepository.save(new CreditCard("000000004", account));
@@ -47,6 +44,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         account = new Account("charlie", encoder.encode("qwerty"), "Charlie");
         accountRepository.save(account);
         creditCardRepository.save(new CreditCard("000000007", account));
+        creditCardRepository.save(new CreditCard("000000008", account));
+        creditCardRepository.save(new CreditCard("000000009", account));
     }
 
     @Override

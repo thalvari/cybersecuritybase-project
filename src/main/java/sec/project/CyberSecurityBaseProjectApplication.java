@@ -21,9 +21,8 @@ public class CyberSecurityBaseProjectApplication implements EmbeddedServletConta
             @Override
             public void customize(Context cntxt) {
                 cntxt.setUseHttpOnly(false);
-                cntxt.getManager().getSessionIdGenerator().setSessionIdLength(1);
+                cntxt.getManager().setSessionIdGenerator(new MySessionIdGenerator());
             }
-
         });
     }
 

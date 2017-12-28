@@ -13,6 +13,7 @@ public class Account extends AbstractPersistable<Long> {
     @Column(unique = true)
     private String username;
     private String password;
+    @Column(unique = true)
     private String name;
     @OneToMany
     private List<CreditCard> creditCards;
