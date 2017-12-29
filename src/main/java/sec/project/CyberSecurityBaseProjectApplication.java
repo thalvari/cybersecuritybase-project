@@ -7,7 +7,6 @@ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletCont
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
-import sec.project.config.MySessionIdGenerator;
 
 @SpringBootApplication
 //public class CyberSecurityBaseProjectApplication {
@@ -20,11 +19,12 @@ public class CyberSecurityBaseProjectApplication implements EmbeddedServletConta
     @Override
     public void customize(ConfigurableEmbeddedServletContainer cesc) {
         ((TomcatEmbeddedServletContainerFactory) cesc).addContextCustomizers(new TomcatContextCustomizer() {
+
             @Override
-            public void customize(Context cntxt) {
-                cntxt.setUseHttpOnly(false);
-                cntxt.getManager().setSessionIdGenerator(new MySessionIdGenerator());
+            public void customize(Context context) {
+                context.setUseHttpOnly(false);
             }
+
         });
     }
 

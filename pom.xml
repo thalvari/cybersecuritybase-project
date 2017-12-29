@@ -44,7 +44,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
+
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -71,7 +73,7 @@
             <plugin>
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
-                <version>1.4.4</version>
+                <version>3.0.2</version>
                 <executions>
                     <execution>
                         <goals>

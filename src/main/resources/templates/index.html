@@ -21,14 +21,14 @@
 
 <h2>Add a credit card</h2>
 
-<form th:action="@{/addCard/} + ${id}" method="POST">
+<form th:action="@{/addCard}" method="POST">
     <p><label>Card number</label>: <input type="text" name="number"/></p>
     <p><input type="submit" value="Submit"/></p>
 </form>
 
 <h2>Change name</h2>
 
-<form th:action="@{/changeName/} + ${id}" method="POST">
+<form th:action="@{/changeName}" method="POST">
     <p><label>New name</label>: <input type="text" name="newName"/></p>
     <p><input type="submit" value="Submit"/></p>
 </form>
