@@ -12,11 +12,8 @@ import sec.project.domain.Account;
 import sec.project.repository.AccountRepository;
 
 import static org.junit.Assert.assertEquals;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -32,13 +29,6 @@ public class AccountControllerTest {
     @Before
     public void setUp() {
         testAccount = accountRepository.findOne(1L);
-    }
-
-    @Test
-    public void testLoadIndexWithId() throws Throwable {
-        mockMvc.perform(
-                get("/").with(user(testAccount.getUsername())))
-                .andExpect(redirectedUrl("/1")).andReturn().getRequest();
     }
 
     @Test

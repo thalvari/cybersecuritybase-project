@@ -5,7 +5,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sec.project.domain.Account;
@@ -23,28 +22,13 @@ public class AccountController {
 
     @GetMapping("*")
     public String defaultMapping() {
-//        return "redirect:/";
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        Account account = accountRepository.findByUsername(username);
-        return "redirect:/" + account.getId();
+        return "redirect:/";
     }
 
-//    @GetMapping("/")
-//    public String loadIndex(Model model) {
-//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-//        Account account = accountRepository.findByUsername(username);
-//        model.addAttribute("account", account);
-//        model.addAttribute("cards", creditCardRepository.findByAccountName(account.getName()));
-//        return "index";
-//    }
-
-    @GetMapping("/{id}")
-    public String loadIndexWithId(Model model, @PathVariable Long id) {
-        Account account = accountRepository.findOne(id);
-        if (account == null) {
-            return "redirect:/";
-        }
-
+    @GetMapping("/")
+    public String loadIndex(Model model) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Account account = accountRepository.findByUsername(username);
         model.addAttribute("account", account);
         model.addAttribute("cards", creditCardRepository.findByAccountName(account.getName()));
         return "index";
@@ -58,7 +42,6 @@ public class AccountController {
             account.setName(newName);
             accountRepository.save(account);
         }
-
         return "redirect:/";
     }
 

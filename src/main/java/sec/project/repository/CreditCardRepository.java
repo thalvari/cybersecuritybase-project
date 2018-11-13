@@ -5,10 +5,9 @@ import sec.project.domain.CreditCard;
 
 import java.util.List;
 
-//public interface CreditCardRepository extends JpaRepository<CreditCard, Long> {
-public interface CreditCardRepository extends JpaRepository<CreditCard, Long>, CreditCardRepositoryCustom {
+public interface CreditCardRepository extends JpaRepository<CreditCard, Long> {
 
     CreditCard findByNumber(String number);
 
-//    List<CreditCard> findByAccountName(String name);
+    List<CreditCard> findByAccountName(String name);
 }
